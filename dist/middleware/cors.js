@@ -8,7 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const ACCEPTED_ORIGINS = [
     "http://localhost:4200",
     "http://localhost/8080",
-    "https://productsapp-frontend.netlify.app/",
+    "https://productsapp-frontend.netlify.app",
 ];
 const corsMiddleware = (acceptedOrigins = ACCEPTED_ORIGINS) => {
     return (0, cors_1.default)({
