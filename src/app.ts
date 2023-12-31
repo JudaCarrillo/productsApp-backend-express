@@ -2,6 +2,8 @@ import express from "express";
 import { ProductRouter } from "./routes";
 import { Connection } from "./connection";
 import { corsMiddleware } from "./middleware/cors";
+import Dotenv from "dotenv";
+import { ProductModel } from "./models/product.model";
 
 export class App {
   private app = express();
@@ -38,3 +40,7 @@ export class App {
     await this.connection.testConnection();
   }
 }
+
+// we configure the variables of ambient
+Dotenv.config();
+const server = new App({ ProductModel });

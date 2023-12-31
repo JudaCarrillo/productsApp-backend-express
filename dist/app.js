@@ -17,6 +17,8 @@ const express_1 = __importDefault(require("express"));
 const routes_1 = require("./routes");
 const connection_1 = require("./connection");
 const cors_1 = require("./middleware/cors");
+const dotenv_1 = __importDefault(require("dotenv"));
+const product_model_1 = require("./models/product.model");
 class App {
     constructor({ ProductModel }) {
         this.app = (0, express_1.default)();
@@ -46,3 +48,6 @@ class App {
     }
 }
 exports.App = App;
+// we configure the variables of ambient
+dotenv_1.default.config();
+const server = new App({ ProductModel: product_model_1.ProductModel });
