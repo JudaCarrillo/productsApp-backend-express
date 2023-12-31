@@ -16,6 +16,7 @@ exports.App = void 0;
 const express_1 = __importDefault(require("express"));
 const routes_1 = require("./routes");
 const connection_1 = require("./connection");
+const cors_1 = require("./middleware/cors");
 class App {
     constructor({ ProductModel }) {
         this.app = (0, express_1.default)();
@@ -24,6 +25,8 @@ class App {
         this.connection = new connection_1.Connection();
         this.appConnect();
         this.appMiddlewares();
+        this.app.disable("x-powered-by");
+        this.app.use((0, cors_1.corsMiddleware)());
         this.appRoutes();
         this.appListen();
     }

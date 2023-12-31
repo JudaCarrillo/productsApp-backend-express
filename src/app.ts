@@ -1,6 +1,7 @@
 import express from "express";
 import { ProductRouter } from "./routes";
 import { Connection } from "./connection";
+import { corsMiddleware } from "./middleware/cors";
 
 export class App {
   private app = express();
@@ -13,6 +14,8 @@ export class App {
     this.connection = new Connection();
     this.appConnect();
     this.appMiddlewares();
+    this.app.disable("x-powered-by");
+    this.app.use(corsMiddleware());
     this.appRoutes();
     this.appListen();
   }
